@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductsStore } from './../../store/products.store';
 
 @Component({
-  selector: 'app-header',
+  selector: 'e-commerce-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   addedProductIds$ = this.productsStore.addedProductIds$;
   constructor(private readonly productsStore: ProductsStore) { }
-
-  ngOnInit(): void {
-  }
 
 }
