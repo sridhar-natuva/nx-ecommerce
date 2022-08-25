@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "coupon": "OFFER30",
+        "offer_percent": 30
+    },
+    {
+        "id": 2,
+        "coupon": "OFFER50",
+        "offer_percent": 50
+    }
+]
