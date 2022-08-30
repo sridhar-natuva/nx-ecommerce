@@ -1,31 +1,46 @@
 import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { Observable } from 'rxjs';
+import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { Observable, switchMap, take } from 'rxjs';
 import { Product } from '../components/products/products.model';
+import { ProductsService } from '../services/products.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface ProductsState {
     products: Product[];
     addedProductIds: string[];
 }
 
-@Injectable({ providedIn: 'root' })
-export class ProductsStore extends ComponentStore<ProductsState> {
+const initialState: ProductsState = {
+    products: [],
+    addedProductIds: []
+};
 
-    constructor() {
-        super({
-            products: [
-                { id: 'A100', name: 'A', category: 'cloths', price: 100 },
-                { id: 'A101', name: 'B', category: 'groceries', price: 100 },
-                { id: 'A102', name: 'C', category: 'groceries', price: 100 },
-                { id: 'A103', name: 'D', category: 'electronics', price: 100 },
-                { id: 'A104', name: 'E', category: 'cloths', price: 100 },
-                { id: 'A105', name: 'F', category: 'electronics', price: 100 },
-                { id: 'A106', name: 'G', category: 'cloths', price: 100 },
-                { id: 'A107', name: 'H', category: 'electronics', price: 100 }
-            ],
-            addedProductIds: []
-        });
+@Injectable({ providedIn: 'root' })
+export class ProductsStore extends ComponentStore<ProductsState>{
+
+    constructor(private productsService: ProductsService) {
+        super(initialState);
+        this.getAllProducts();
     }
+
+
+    getAllProducts = this.effect<void>(
+        // Synchronous observable emitting undefined once to kick off the effect
+        trigger$ => trigger$.pipe(
+            take(1),
+            switchMap(() => this.productsService.fetchAllProducts().pipe(
+                tapResponse(
+                    (products) => this.#replaceProducts(products),
+                    (error: HttpErrorResponse) => console.log(error),
+                ),
+            ))
+        )
+    );
+
+    #replaceProducts = this.updater<readonly Product[]>((state, products): ProductsState => ({
+        ...state,
+        products: [...products]
+    }));
 
     readonly products$: Observable<Product[]> = this.select(state => state.products);
 
