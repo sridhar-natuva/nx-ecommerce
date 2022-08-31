@@ -6,7 +6,6 @@ export class ProductsController {
 
     @Get()
     getAllProducts(@Req() request: Request): any[] {
-        console.log(request);
         return [
             { id: 'A100', name: 'A', category: 'cloths', price: 100 },
             { id: 'A101', name: 'B', category: 'groceries', price: 100 },

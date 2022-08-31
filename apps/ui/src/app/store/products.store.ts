@@ -50,7 +50,7 @@ export class ProductsStore extends ComponentStore<ProductsState>{
         state => {
             const products = state.products;
             const ids = state.addedProductIds;
-            return products.filter(item => ids.indexOf(item.id) === -1);
+            return products.filter(item => ids.indexOf(item.id) !== -1);
         }
     );
 
