@@ -54,5 +54,14 @@ export class ProductsStore extends ComponentStore<ProductsState>{
         }
     );
 
+    readonly totalCostInCart$: Observable<number> = this.select(
+        state => {
+            const products = state.products;
+            const ids = state.addedProductIds;
+            return products.filter(item => ids.indexOf(item.id) !== -1).reduce(((acc, curr) => acc + curr.price), 0);
+
+        }
+    )
+
 
 }

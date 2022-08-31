@@ -14,6 +14,7 @@ export class CartComponent {
   isApplied = false;
 
   itemsInCart$ = this.productsStore.viewAddedProducts$;
+  totalCostInCart$ = this.productsStore.totalCostInCart$;
   constructor(private readonly productsStore: ProductsStore) { }
 
   applyCoupon() {
