@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 // import coupons from "./coupons.json";
-import { ProductsStore } from './../../store/products.store';
 
 @Component({
   selector: 'e-commerce-cart',
@@ -9,13 +8,11 @@ import { ProductsStore } from './../../store/products.store';
 })
 export class CartComponent {
 
+  @Input() products: any[] = [];
+
   coupon = '';
   total = 590;
   isApplied = false;
-
-  itemsInCart$ = this.productsStore.viewAddedProducts$;
-  totalCostInCart$ = this.productsStore.totalCostInCart$;
-  constructor(private readonly productsStore: ProductsStore) { }
 
   applyCoupon() {
     // const valid_coupon = coupons.find((c: any) => c.coupon == this.coupon);

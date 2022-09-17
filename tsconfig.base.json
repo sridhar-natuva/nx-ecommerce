@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@e-commerce/cart/feature": ["libs/cart/feature/src/index.ts"],
+      "@e-commerce/shell/feature": ["libs/shell/feature/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

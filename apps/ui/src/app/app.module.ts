@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CartComponent } from './components/cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/shared/material.angular';
@@ -15,13 +14,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+// import { CartShellModule } from '@e-commerce/shell/feature';
+import { CartFeatureModule } from '@e-commerce/cart/feature';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    // CartShellModule,
+    CartFeatureModule,
     StoreModule.forRoot(
       {},
       {
