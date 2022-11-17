@@ -1,6 +1,6 @@
 import { StreamDataComponent } from './components/stream-data/stream-data.component';
-import { CartComponent } from './components/cart/cart.component';
-import { ProductsComponent } from './components/products/products.component';
+// import { CartComponent } from './components/cart/cart.component';
+// import { ProductsComponent } from './components/products/products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

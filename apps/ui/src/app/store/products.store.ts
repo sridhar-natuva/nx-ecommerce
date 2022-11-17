@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { Product } from '../components/products/products.model';
 
 export interface ProductsState {
@@ -27,17 +27,17 @@ export class ProductsStore extends ComponentStore<ProductsState> {
         });
     }
 
-    readonly products$: Observable<Product[]> = this.select(state => state.products);
+    // readonly products$: Observable<Product[]> = this.select(state => state.products);
 
-    readonly addedProductIds$: Observable<string[]> = this.select(state => state.addedProductIds);
+    // readonly addedProductIds$: Observable<string[]> = this.select(state => state.addedProductIds);
 
-    readonly viewAddedProducts$: Observable<Product[]> = this.select(
-        state => {
-            const products = state.products;
-            const ids = state.addedProductIds;
-            return products.filter(item => ids.indexOf(item.id) === -1);
-        }
-    );
+    // readonly viewAddedProducts$: Observable<Product[]> = this.select(
+    //     state => {
+    //         const products = state.products;
+    //         const ids = state.addedProductIds;
+    //         return products.filter(item => ids.indexOf(item.id) === -1);
+    //     }
+    // );
 
 
 }

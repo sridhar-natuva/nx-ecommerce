@@ -8,20 +8,20 @@ import { ProductsStore } from '../../store/products.store';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent  {
 
   constructor(private readonly productsStore: ProductsStore) { }
 
   products$ = this.productsStore.products$;
   addedProductIds$ = this.productsStore.addedProductIds$;
 
-  ngOnInit(): void {
-  }
+  // ngOnInit(): void {
+  // }
 
-  addProduct(productId: string) {
-    this.productsStore.patchState((state) => ({
-      addedProductIds: [...state.addedProductIds, productId]
-    }));
-  }
+  // addProduct(productId: string) {
+  //   this.productsStore.patchState((state) => ({
+  //     addedProductIds: [...state.addedProductIds, productId]
+  //   }));
+  // }
 
 }
