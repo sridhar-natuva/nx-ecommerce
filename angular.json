@@ -6,6 +6,7 @@
     "cart-feature": "libs/cart/feature",
     "shell-feature": "libs/shell/feature",
     "ui": "apps/ui",
-    "ui-e2e": "apps/ui-e2e"
+    "ui-e2e": "apps/ui-e2e",
+    "zero-mq": "apps/zero-mq"
   }
 }
