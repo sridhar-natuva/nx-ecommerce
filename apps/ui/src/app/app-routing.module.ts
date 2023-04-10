@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AuthGuard } from './guards/auth.guard';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: 'welcome', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   {
     path: 'cart', component: CartPageComponent,
