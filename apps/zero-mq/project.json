@@ -1,16 +1,19 @@
 {
+  "name": "zero-mq",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/zero-mq/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/zero-mq",
         "main": "apps/zero-mq/src/main.ts",
         "tsConfig": "apps/zero-mq/tsconfig.app.json",
-        "assets": ["apps/zero-mq/src/assets"]
+        "assets": ["apps/zero-mq/src/assets"],
+        "compiler": "tsc",
+        "target": "node"
       },
       "configurations": {
         "production": {
@@ -27,7 +30,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:node",
+      "executor": "@nx/js:node",
       "options": {
         "buildTarget": "zero-mq:build"
       },
@@ -38,15 +41,15 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/zero-mq/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/zero-mq"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/zero-mq"],
       "options": {
         "jestConfig": "apps/zero-mq/jest.config.ts",
         "passWithNoTests": true
