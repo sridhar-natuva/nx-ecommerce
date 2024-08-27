@@ -16,7 +16,7 @@ const initialState: ProductsState = {
 };
 
 @Injectable({ providedIn: 'root' })
-export class ProductsStore extends ComponentStore<ProductsState>{
+export class ProductsStore extends ComponentStore<ProductsState> {
 
     constructor(private productsService: ProductsService) {
         super(initialState);
@@ -62,6 +62,10 @@ export class ProductsStore extends ComponentStore<ProductsState>{
 
         }
     )
+
+    readonly filterByName = (key: string) => this.select((state) => {
+        return state.products.filter(p => p.name.includes(key));
+    })
 
 
 }

@@ -20,4 +20,7 @@ export class ProductsComponent {
     }));
   }
 
+  filterproductsBy(key: string) {
+    this.products$ = this.productsStore.filterByName(key)
+  }
 }
