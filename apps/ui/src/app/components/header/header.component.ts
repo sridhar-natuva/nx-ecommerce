@@ -1,4 +1,4 @@
-import { KeycloakService } from 'keycloak-angular';
+// import { KeycloakService } from 'keycloak-angular';
 import { Component, OnInit } from '@angular/core';
 import { ProductsStore } from './../../store/products.store';
 
@@ -11,14 +11,17 @@ export class HeaderComponent implements OnInit {
 
   addedProductIds$ = this.productsStore.addedProductIds$;
   user = '';
-  constructor(private readonly productsStore: ProductsStore, private _keycloakService: KeycloakService) { }
+  constructor(
+    private readonly productsStore: ProductsStore,
+    // private _keycloakService: KeycloakService
+  ) { }
 
   ngOnInit(): void {
-    this.user = this._keycloakService.getUsername();
+    // this.user = this._keycloakService.getUsername();
   }
 
   onLogout() {
-    this._keycloakService.logout();
+    // this._keycloakService.logout();
   }
 
 }

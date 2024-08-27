@@ -21,24 +21,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 // import { CartShellModule } from '@e-commerce/shell/feature';
 import { CartFeatureModule } from '@e-commerce/cart/feature';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+// import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HomeComponent } from './components/home/home.component';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        realm: 'angular',
-        url: 'http://localhost:8080',
-        clientId: 'webapp',
-      },
-      initOptions: {
-        onLoad: 'login-required',
-        silentCheckSsoRedirectUri: window.location.origin + '/sso.html'
-      },
-      loadUserProfileAtStartUp: true
-    });
-}
+// function initializeKeycloak(keycloak: KeycloakService) {
+//   return () =>
+//     keycloak.init({
+//       config: {
+//         realm: 'angular',
+//         url: 'http://localhost:8080',
+//         clientId: 'webapp',
+//       },
+//       initOptions: {
+//         onLoad: 'login-required',
+//         silentCheckSsoRedirectUri: window.location.origin + '/sso.html'
+//       },
+//       loadUserProfileAtStartUp: true
+//     });
+// }
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     HttpClientModule,
     // CartShellModule,
     CartFeatureModule,
-    KeycloakAngularModule,
+    // KeycloakAngularModule,
     StoreModule.forRoot(
       {},
       {
@@ -72,14 +72,14 @@ function initializeKeycloak(keycloak: KeycloakService) {
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
-  ],
+  // providers: [
+  //   {
+  //     provide: APP_INITIALIZER,
+  //     useFactory: initializeKeycloak,
+  //     multi: true,
+  //     deps: [KeycloakService],
+  //   },
+  // ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
