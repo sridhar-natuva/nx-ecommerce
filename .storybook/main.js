@@ -6,5 +6,7 @@ module.exports = {
 
   docs: {
     autodocs: true
-  }
+  },
+
+  addons: ["@chromatic-com/storybook"]
 };

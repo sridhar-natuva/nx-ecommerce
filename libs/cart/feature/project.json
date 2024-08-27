@@ -4,24 +4,17 @@
   "projectType": "library",
   "sourceRoot": "libs/cart/feature/src",
   "prefix": "e-commerce",
+  "tags": [],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/cart/feature"],
       "options": {
-        "jestConfig": "libs/cart/feature/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/cart/feature/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/cart/feature/**/*.ts",
-          "libs/cart/feature/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }

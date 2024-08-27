@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/ui/src",
   "prefix": "e-commerce",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -59,10 +60,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "ui:build:production"
+          "buildTarget": "ui:build:production"
         },
         "development": {
-          "browserTarget": "ui:build:development"
+          "buildTarget": "ui:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,21 +71,17 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "ui:build"
+        "buildTarget": "ui:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["apps/ui/**/*.ts", "apps/ui/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/ui"],
       "options": {
-        "jestConfig": "apps/ui/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/ui/jest.config.ts"
       }
     },
     "storybook": {
@@ -116,6 +113,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

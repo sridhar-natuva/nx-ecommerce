@@ -17,7 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 // import { CartShellModule } from '@e-commerce/shell/feature';
 import { CartFeatureModule } from '@e-commerce/cart/feature';
@@ -40,46 +40,37 @@ import { HomeComponent } from './components/home/home.component';
 //     });
 // }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ProductsComponent,
-    HeaderComponent,
-    FooterComponent,
-    CartPageComponent,
-    HomeComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    // CartShellModule,
-    CartFeatureModule,
-    // KeycloakAngularModule,
-    StoreModule.forRoot(
-      {},
-      {
-        metaReducers: !environment.production ? [] : [],
-        runtimeChecks: {
-          strictActionImmutability: true,
-          strictStateImmutability: true,
-        },
-      }
-    ),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-  ],
-  // providers: [
-  //   {
-  //     provide: APP_INITIALIZER,
-  //     useFactory: initializeKeycloak,
-  //     multi: true,
-  //     deps: [KeycloakService],
-  //   },
-  // ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ProductsComponent,
+        HeaderComponent,
+        FooterComponent,
+        CartPageComponent,
+        HomeComponent,
+    ],
+    // providers: [
+    //   {
+    //     provide: APP_INITIALIZER,
+    //     useFactory: initializeKeycloak,
+    //     multi: true,
+    //     deps: [KeycloakService],
+    //   },
+    // ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        // CartShellModule,
+        CartFeatureModule,
+        // KeycloakAngularModule,
+        StoreModule.forRoot({}, {
+            metaReducers: !environment.production ? [] : [],
+            runtimeChecks: {
+                strictActionImmutability: true,
+                strictStateImmutability: true,
+            },
+        }),
+        EffectsModule.forRoot([]),
+        !environment.production ? StoreDevtoolsModule.instrument({ connectInZone: true }) : []], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
