@@ -1,5 +1,5 @@
 // import { KeycloakService } from 'keycloak-angular';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductsStore } from './../../store/products.store';
 
 @Component({
@@ -9,12 +9,9 @@ import { ProductsStore } from './../../store/products.store';
 })
 export class HeaderComponent {
 
-  addedProductIds$ = this.productsStore.addedProductIds$;
+  private service = inject(ProductsStore)
+  addedProductIds$ = this.service.addedProductIds$;
   user = '';
-  constructor(
-    private readonly productsStore: ProductsStore,
-    // private _keycloakService: KeycloakService
-  ) { }
 
   onLogout() {
     // this._keycloakService.logout();

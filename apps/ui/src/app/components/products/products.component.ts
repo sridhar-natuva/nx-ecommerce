@@ -1,16 +1,21 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { ProductsStore } from '../../store/products.store';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'e-commerce-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule
+  ]
 })
 export class ProductsComponent {
 
-  constructor(private readonly productsStore: ProductsStore) { }
+  private productsStore = inject(ProductsStore);
   products$ = this.productsStore.products$;
   addedProductIds$ = this.productsStore.addedProductIds$;
 

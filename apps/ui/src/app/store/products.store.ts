@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';import { tapResponse } from '@ngrx/operators';
+import { ComponentStore } from '@ngrx/component-store';
+import { tapResponse } from '@ngrx/operators';
 
 import { Observable, switchMap, take } from 'rxjs';
 import { Product } from '../components/products/products.model';
@@ -43,7 +44,7 @@ export class ProductsStore extends ComponentStore<ProductsState> {
         products: [...products]
     }));
 
-    readonly products$: Observable<Product[]> = this.select(state => state.products);
+    readonly products$: Observable<Product[]> = this.select(state => state.products || []);
 
     readonly addedProductIds$: Observable<string[]> = this.select(state => state.addedProductIds);
 

@@ -21,7 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -44,7 +43,6 @@ const materialComponents = [
   MatGridListModule,
   MatPaginatorModule,
   MatSortModule,
-  // FlexLayoutModule,
   MatSelectModule,
   CdkTableModule,
   MatProgressSpinnerModule,

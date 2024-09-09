@@ -1,5 +1,5 @@
-import { Product } from './../../components/products/products.model';
-import { Component, OnInit } from '@angular/core';
+import { ProductsStore } from '../../store/products.store';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'e-commerce-cart-page',
@@ -7,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent {
-  products = [{
-    name: 'hellofrom main app',
-    price: 100,
-    category: 'there ?'
-  }]
-
+  private productsStore = inject(ProductsStore);
+  cart_items$ = this.productsStore.products$;
 }

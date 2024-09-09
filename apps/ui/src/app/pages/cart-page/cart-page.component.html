@@ -1,1 +1,7 @@
-<e-commerce-cart [products]="products"></e-commerce-cart>
+@let cart_items = (cart_items$ | async)!;
+
+@if(cart_items.length > 0) {
+    <e-commerce-cart [products]="cart_items"></e-commerce-cart>
+} @else {
+    no items in the cart
+}
